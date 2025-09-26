@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+/* Text colors */
+.text-primary {
+	color: #28a745;
+}
+
+.bg-primary {
+	background: #28a745;
+	color: #fff;
+}
+
+.btn-dark,
+.bg-dark {
+	background: #333;
+	color: #fff;
+}
+
+.btn-light,
+.bg-light {
+	background: #f4f4f4;
+	color: #333;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #333;
+	line-height: 1.6;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+p {
+	margin: 10px 0;
+}
+
+img {
+	width: 100%;
+}
+
+canvas {
+	margin: auto;
+
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #1B2631;
+	color: #fff;
+	opacity: 1;
+	width: 100%;
+	height: 70px;
+	position: fixed;
+	top: 0px;
+	padding: 0 30px;
+	transition: 0.5s;
+	z-index: 3;
+}
+
+.navbar a {
+	color: #fff;
+	padding: 10px 20px;
+	margin: 0 5px;
+}
+
+.navbar a:hover {
+	border-bottom: #28a745 2px solid;
+}
+
+.navbar ul {
+	display: flex;
+}
+
+.navbar .logo {
+	font-weight: 400;
+}
+
+.navbar li {
+	margin: auto;
+}
+
+.homeheader {
+	height: 100vh;
+	position: relative;
+	color: #fff;
+	background: url('../css/mutual-fund-landing-image.jpg') center center/cover;
+}
+
+.homeheader .content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 100%;
+	padding: 0 20px;
+}
+
+.homeheader .content h1 {
+	margin-top: 4%;
+	font-size: 55px;
+	z-index: 1;
+}
+
+.homeheader .content p {
+	font-size: 23px;
+	max-width: 600px;
+	margin: 20px 0 30px;
+	z-index: 1;
+}
+
+.homeheader .content a {
+	z-index: 1;
+}
+
+.homeheader::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+
+.icons {
+	padding: 30px;
+}
+
+.icons h3 {
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.icons i {
+	background-color: #28a745;
+	color: #fff;
+	padding: 1rem;
+	border-radius: 50%;
+	margin-bottom: 15px;
+}
+
+.footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 10%;
+	width: 100%;
+	bottom: 0;
+}
+
+.user-icon-button {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.user-icon {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 10px rgba(0, 0, 0, 0.2);
+	z-index: 2;
+	right: 0%;
+	margin: auto;
+}
+
+.user-icon:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	margin-right: 0px;
+	margin-left: 0px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+	cursor: pointer;
+}
+
+.dashboard-piechart {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.dashboard-piechart {
+	display: flex;
+	flex-direction: column;
+	margin-right: 20px;
+}
+
+.user-dashboard {
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+.user-investment-table td.returnspercentage {
+	color: #28a745;
+}
+
+.holdings-table table {
+	margin: auto;
+	width: 60%;
+	border-collapse: collapse;
+	border: 2px solid white;
+	border-radius: 10px;
+}
+
+.holdings-table th,
+.holdings-table td {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 8px;
+	border: 1px solid white;
+	margin: auto;
+}
+
+.holdings-table th {
+	background-color: #15172b;
+}
+
+.holdings-table caption {
+	margin: auto;
+	background-color: #28a745;
+	margin-bottom: 4%;
+	border-radius: 5px;
+	text-align: center;
+	color: #eee;
+	width: 40%;
+	font-weight: 700;
+	font-size: 20px;
+	padding: 1%;
+}
+
+.user-investment-table {
+	background-color: black;
+	border-radius: 10px;
+	margin: auto;
+	width: 80%;
+}
+
+.user-investment-table tr,
+th,
+td {
+	text-align: center;
+}
+
+.user-investment-table th {
+	padding-top: 10px;
+	color: rgba(255, 255, 255, 0.753);
+}
+
+.user-investment-table td {
+	font-weight: bold;
+	color: white;
+}
+
+.user-investment-table td.returnspercentage {
+	color: green;
+}
+
+.dashboard {
+	height: 80vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+.holdings-container {
+	height: 100%;
+	width: 63%;
+	background-color: #111;
+	padding: 1%;
+}
+
+.investment-table-container {
+	height: 23%;
+	width: 37%;
+	background-color: #28a745;
+	position: absolute;
+	top: 100vh;
+	right: 0;
+}
+
+.piechart-container {
+	height: 77%;
+	width: 37%;
+	margin-top: auto;
+	margin-left: auto;
+	background-color: #15172b;
+}
+
+.dashboard-title {
+	color: #eee;
+	background-color: #15172b;
+	height: 10%;
+	width: 40%;
+	border-radius: 5px;
+	margin: auto;
+	text-align: center;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.piechart-title {
+	margin: auto;
+	margin-top: 9%;
+	margin-bottom: 2%;
+	color: #eee;
+	background-color: #28a745;
+	height: 10%;
+	width: 40%;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.analysis {
+	font-weight: 1000;
+}
+
+.toast {
+    background-color: black !important;
+    color: white !important;
+	width: 400px !important;
+	text-align: center !important;
+}

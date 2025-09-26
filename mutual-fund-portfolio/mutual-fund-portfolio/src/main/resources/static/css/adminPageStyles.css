@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+.text-primary {
+	color: #28a745;
+}
+
+.btn {
+	cursor: pointer;
+	display: inline-block;
+	padding: 5px 15px;
+	color: #fff;
+	background-color: #28a745;
+	border: none;
+	border-radius: 10px;
+	margin: auto;
+	position: absolute;
+}
+
+.btn1 {
+	margin-top: -6%;
+	bottom: 10%;
+	margin-left: 43.5%;
+}
+
+.btn2 {
+	margin: auto;
+	margin-top: 1%;
+	bottom: -80%;
+	margin-left: 44.7%;
+}
+
+.bg-primary {
+	background: #28a745;
+	color: #fff;
+}
+
+.btn-dark,
+.bg-dark {
+	background: #333;
+	color: #fff;
+}
+
+.btn-light,
+.bg-light {
+	background: #f4f4f4;
+	color: #333;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #333;
+	line-height: 1.6;
+	background: url('../css/mutual-fund-landing-image.jpg') center center/cover;
+	height: 100vh;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+h1,
+h2 {
+	font-weight: 300;
+	line-height: 1.2;
+}
+
+p {
+	margin: 10px 0;
+}
+
+img {
+	width: 100%;
+}
+
+table {
+	margin: auto;
+	width: 60%;
+	border-collapse: collapse;
+	border: 2px solid white;
+	border-radius: 10px;
+}
+
+th,
+td {
+	background-color: #15172b;
+	color: white;
+	text-align: center;
+	padding: 8px;
+	border: 1px solid white;
+}
+
+th {
+	background-color: black;
+}
+
+caption {
+	margin: auto;
+	background-color: #28a745;
+	margin-bottom: 4%;
+	margin-top: 4%;
+	border-radius: 5px;
+	text-align: center;
+	color: #eee;
+	width: 40%;
+	font-weight: 700;
+	font-size: 20px;
+	padding: 1%;
+}
+
+.caption1 {
+	margin-top: -24%;
+}
+
+.pagination {
+	height: 50px;
+	width: 25%;
+	background-color: #15172b;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	margin: auto;
+	margin-top: 0%;
+	border-radius: 5px;
+	bottom: -70%;
+	position: absolute;
+	margin-left: 37.5%;
+}
+
+.pagination a {
+	color: #eee;
+	text-decoration: none;
+	padding: 8px;
+	margin: 0 5px;
+	border: 1px solid white;
+	border-radius: 4px;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+	background-color: #28a745;
+	color: #eee;
+}
+
+.table2 {
+	margin-top: -10%;
+}
+
+.link {
+	color: #28a745;
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #1B2631;
+	color: #fff;
+	opacity: 1;
+	width: 100%;
+	height: 70px;
+	position: fixed;
+	top: 0px;
+	padding: 0 30px;
+	transition: 0.5s;
+}
+
+.navbar a {
+	color: #fff;
+	padding: 10px 20px;
+	margin: 0 5px;
+}
+
+.navbar a:hover {
+	border-bottom: #28a745 2px solid;
+	cursor: pointer;
+}
+
+.navbar ul {
+	display: flex;
+	white-space: nowrap;
+}
+
+.navbar .logo {
+	font-weight: 400;
+}
+
+.hero {
+	background-color: #1B2631;
+	height: 9.5%;
+	position: relative;
+	color: #fff;
+}
+
+.hero::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.hero * {
+	z-index: 10;
+}
+
+.content1 {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	text-align: center;
+	height: 100vh;
+	margin-top: -6%;
+}
+
+.content2 {
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	text-align: center;
+	height: 90vh;
+}
+
+.icons {
+	padding: 30px;
+}
+
+.icons h3 {
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.icons i {
+	background-color: #28a745;
+	color: #fff;
+	padding: 1rem;
+	border-radius: 50%;
+	margin-bottom: 15px;
+}
+
+.footer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 10%;
+	position: absolute;
+	bottom: -10;
+}
+
+.toast {
+    background-color: black !important;
+    color: white !important;
+	width: 400px !important;
+	text-align: center !important;
+}
+
+.toast .btn {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 30px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+	margin-left: 0;
+	position: relative;
+}
+
+@media(max-width: 768px) {
+	.navbar {
+		flex-direction: column;
+		height: 120px;
+		padding: 20px;
+	}
+
+	.navbar a {
+		padding: 10px 10px;
+		margin: 0 3px;
+	}
+
+	.flex-items {
+		flex-direction: column;
+	}
+
+	.flex-columns .column,
+	.flex-grid .column {
+		flex: 100%;
+		max-width: 100%;
+	}
+
+	.team img {
+		width: 70%;
+	}
+}

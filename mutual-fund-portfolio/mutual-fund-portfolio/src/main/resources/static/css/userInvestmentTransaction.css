@@ -1,0 +1,100 @@
+@charset "ISO-8859-1";
+
+table {
+	margin:auto;
+    width: 60%;
+    border-collapse: collapse;
+    border: 2px solid white;
+    border-radius:10px;
+}
+
+th,
+td {
+    background-color: #15172b;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    border: 1px solid white;
+}
+
+th {
+    background-color: black;
+}
+
+caption {
+	display flex;
+	flex-direction: column;
+	margin:auto;
+	background-color: #28a745;
+	margin-bottom:4%;
+	margin-top:4%;
+	border-radius:5px;
+    text-align: center;
+    color: #eee;
+    width: 40%;
+    font-weight:700;
+    font-size:20px;
+    padding:1%;
+}
+
+h2 {
+	margin-top: 50px;
+	color: #f2f2f2;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+.user-transactions {
+	margin-top: 20px;
+}
+
+#invest-transactions-table {
+	margin-top: 20px;
+}
+
+.no-transactions {
+	margin-bottom:50%;
+	height:5%;
+	width:20%;
+	text-align:center;
+	background-color:green;
+	margin:auto;
+	margin-left:650px;
+	color: #eee;
+	font-weight: bolder;
+}
+
+.pagination {
+	height:50px;
+	width:400px;
+    background-color:#15172b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin : auto;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.pagination a {
+    color: #eee;
+    text-decoration: none;
+    padding: 8px;
+    margin: 0 5px;
+    border: 1px solid white;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color:#28a745;
+    color: #eee;
+}
+
+.toast {
+    background-color: black !important;
+    color: white !important;
+	width: 400px !important;
+	text-align: center !important;
+}

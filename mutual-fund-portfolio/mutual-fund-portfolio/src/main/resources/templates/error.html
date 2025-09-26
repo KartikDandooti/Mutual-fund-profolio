@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/error.css}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<title>Access Denied..!</title>
+</head>
+
+<body>
+	<div class="error-container">
+		<h1>Access Denied...!</h1>
+		<a th:href="@{/mutualfund/login}"><button type="button" class="btn btn-primary"
+				onclick="redirectToLogin()">Login</button></a>
+		<h5>Please login to proceed</h5>
+	</div>
+</body>
+
+</html>

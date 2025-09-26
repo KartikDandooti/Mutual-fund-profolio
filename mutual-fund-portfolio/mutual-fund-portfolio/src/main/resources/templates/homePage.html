@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Mutual Fund Portfolio App</title>
+	<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css}"
+		integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" th:href="@{/css/homePageUtility.css}" />
+	<link rel="stylesheet" th:href="@{/css/homePage.css}" />
+	<script th:src="@{/js/script.js}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+	<script src="js/lightbox.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+</head>
+
+<body id="home">
+	<header class="homeheader">
+		<div id="navbar" class="navbar top">
+			<h1 class="logo">
+				<span class="text-primary"><i class="fas fa-book-reader"></i>Mutual</span>Fund Portfolio
+			</h1>
+			<nav>
+				<ul>
+					<li><a href="#home">Home</a></li>
+					<th:block th:if="${not #lists.isEmpty(userSchemes)}">
+						<li><a href="#dashboard">Dashboard</a></li>
+					</th:block>
+					<li><a th:href="@{/mutualfund/invest}">Invest</a></li>
+					<li><a th:href="@{/mutualfund/redeem}">Redeem</a></li>
+					<li>
+						<div class="user-icon">
+							<button class="user-icon-button"
+								th:text="${firstName.substring(0, 1)}+${lastName.substring(0,1)}"></button>
+							<div class="dropdown-content">
+								<a th:href="@{/mutualfund/userprofile-view}">View Profile</a>
+								<a th:href="@{/mutualfund/invest-transactions}">Invest Transactions</a>
+								<a th:href="@{/mutualfund/redeem-transactions}">Redeem Transactions</a>
+								<a id="logoutButton" onclick="confirmLogout()">Logout</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="content">
+			<h1>Welcome to <b><span class="text-primary">Your Mutual Fund</span></b> Portfolio!</h1>
+			<p>To look at all the mutual funds we offer, click below!</p>
+			<a th:href="@{/mutualfund/explore-mutualfunds}" class="btn"><i class="fas fa-chevron-right"></i> Explore all
+				mutual fund schemes</a>
+		</div>
+	</header>
+	<th:block th:if="${not #lists.isEmpty(userSchemes)}">
+		<div class="body-content" id="dashboard">
+			<div class="dashboard">
+				<div class="content-container">
+					<div class="holdings-container">
+						<div th:if="${not #lists.isEmpty(userSchemes)}">
+							<div style="max-height: 77vh; overflow-y: auto;overflow-x: hidden;">
+								<table class="holdings-table" id="holdings-table">
+									<caption>All of Your Current Holdings</caption>
+									<thead>
+										<tr>
+											<th>Mutual Fund Type</th>
+											<th>Scheme</th>
+											<th>Invested Amount</th>
+											<th>Redeem Amount</th>
+											<th>Analysis</th>
+											<th>Invest</th>
+											<th>Redeem</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each=" userScheme: ${userSchemes}">
+											<td th:text="${userScheme.scheme.mutualFund.type}"></td>
+											<td th:text="${userScheme.scheme.schemeName}"></td>
+											<td th:text="${userScheme.investedAmount}"></td>
+											<td th:text="${userScheme.currentAmount}"></td>
+											<td class="analysis"
+												th:with="percentageChange=${(((userScheme.currentAmount - userScheme.investedAmount) / userScheme.investedAmount) * 100)}">
+												<span
+													th:text="${percentageChange == 0 ? '' : (percentageChange > 0 ? '+' : '')} + ${percentageChange} + '%'"
+													th:style="${percentageChange > 0 ? 'color: #28a745;' : (percentageChange < 0 ? 'color: #d11a2a;' : '')}"></span>
+											</td>
+											<td> <a class="btn btn1"
+													th:href="@{/mutualfund/invest/scheme(schemeId=${userScheme.scheme.id})}">Invest</a>
+											</td>
+											<td> <a class="btn btn1 btn2"
+													th:href="@{/mutualfund/redeem/scheme(schemeId=${userScheme.scheme.id})}">Redeem</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="investment-table-container">
+						<div class="user-dashboard">
+							<h3 class="dashboard-title">User Dashboard</h3>
+							<table class="user-investment-table">
+								<thead>
+									<tr>
+										<th>Invested Amount</th>
+										<th>Return Amount</th>
+										<th>Total Returns</th>
+									</tr>
+								</thead>
+								<tr>
+									<td class="investment-info-value" th:text="${totalInvestedAmount}">
+									</td>
+									<td th:text="${totalReturnAmount}"
+										th:style="${totalReturnAmount > totalInvestedAmount} ? 'color: green;' : (${totalReturnAmount == totalInvestedAmount} ? 'color: white;' : 'color: red;')">
+									</td>
+									<td class="returnspercentage"
+										th:text="${totalReturnsPercentage == 0 ? '' : (totalReturnsPercentage > 0 ? '+' : '')} + ${totalReturnsPercentage} + '%'"
+										th:style="${totalReturnsPercentage > 0 ? 'color: green;' : (totalReturnsPercentage == 0 ? 'color: white;' : 'color: red;')}">
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="piechart-container">
+						<div class="piechart" th:if="${#lists.size(pieChartDataSummary) > 0}">
+							<h3 class="piechart-title">Portfolio Analysis</h3>
+							<canvas id="pieChart" width="330" height="330"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+	<footer class="footer bg-dark">
+		<p>MutualFund Portfolio</p>
+	</footer>
+
+	<script th:inline="javascript" th:if="${#lists.size(pieChartDataSummary) > 0}">
+
+		var pieChartData = [[${pieChartDataSummary}]];
+
+		var labels = pieChartData.map(function (item) {
+			return item[0];
+		});
+
+		var data = pieChartData.map(function (item) {
+			return item[1];
+		});
+
+		var messages = pieChartData.map(function (item) {
+			return 'You Can Redeem upto Rs.' + item[1] + ' in ' + item[0] + ' type.';
+		});
+
+		var ctx = document.getElementById('pieChart').getContext('2d');
+		var myPieChart = new Chart(ctx, {
+			type: 'pie',
+			data: {
+				labels: labels,
+				datasets: [{
+					data: data,
+					backgroundColor: [
+						'rgba(54, 162, 235, 0.9)',
+						'rgba(255, 206, 86, 0.9)',
+						'rgba(187, 126, 63, 0.9)',
+						'rgba(255, 99, 132, 0.9)',
+						'rgba(7, 246, 232, 0.9)',
+						'rgba(28, 67, 203, 0.9)',
+						'rgba(129, 21, 249, 0.9)',
+						'rgba(94, 132, 178, 0.9)',
+						'rgba(22, 63, 186, 0.9)',
+						'rgba(227, 27, 1, 0.9)',
+					],
+				}]
+			},
+			options: {
+				responsive: false,
+				plugins: {
+					legend: {
+						display: true,
+						position: 'top',
+						labels: {
+							font: {
+								size: 14,
+								style: 'bold'
+							},
+							color: '#fff',
+						}
+					},
+					tooltip: {
+						callbacks: {
+							label: function (context) {
+								return messages[context.dataIndex];
+							}
+						}
+					}
+				},
+				tooltips: {
+					enabled: true,
+					mode: 'index',
+					intersect: false,
+					backgroundColor: 'rgba(0, 0, 0, 0.7)',
+					titleFontColor: '#fff',
+					bodyFontColor: '#fff',
+					titleFontStyle: 'bold',
+					bodyFontStyle: 'bold'
+				}
+			}
+		});
+	</script>
+	<script>
+		const navbar = document.getElementById('navbar');
+		let scrolled = false;
+
+		window.onscroll = function () {
+			if (window.pageYOffset > 100) {
+				navbar.classList.remove('top');
+				if (!scrolled) {
+					navbar.style.transform = 'translateY(-30px)';
+				}
+				setTimeout(function () {
+					navbar.style.transform = 'translateY(0)';
+					scrolled = true;
+				}, 100);
+			} else {
+				navbar.classList.add('top');
+				scrolled = false;
+			}
+		};
+		$('#navbar a, .btn').on('click', function (e) {
+			if (this.hash !== '') {
+				e.preventDefault();
+				const hash = this.hash;
+				$('html, body').animate(
+					{
+						scrollTop: $(hash).offset().top - 70,
+					},
+					800
+				);
+			}
+		});
+	</script>
+</body>
+
+</html>

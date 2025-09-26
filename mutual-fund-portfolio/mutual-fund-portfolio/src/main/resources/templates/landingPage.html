@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/x-icon" href="@{/favicon.ico}" />
+	<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css}"
+		integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" th:href="@{/css/landingPageUtilityStyles.css}" />
+	<link rel="stylesheet" th:href="@{/css/landingPageStyles.css}" />
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+	<script src="js/lightbox.min.js"></script>
+	<title>Welcome to our Mutual Fund Portfolio</title>
+</head>
+
+<body id="home">
+	<header class="hero">
+		<div id="navbar" class="navbar top">
+			<h1 class="logo">
+				<span class="text-primary"><i class="fas fa-book-reader"></i>Mutual</span>Fund Portfolio
+			</h1>
+			<nav>
+				<ul>
+					<li><a href="#home">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a th:href="@{/mutualfund/login}">Login/Register</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="content">
+			<h1>The first step in your <b><span class="text-primary">investment</span></b> journey!</h1>
+			<p>We provide world class assistance for investing in mutual funds</p>
+			<a href="#about" class="btn"><i class="fas fa-chevron-right"></i> Read More</a>
+		</div>
+	</header>
+
+	<main>
+		<section id="about" class="icons bg-light">
+			<div class="flex-items">
+				<div>
+					<i class="fas fa-book fa-2x"></i>
+					<div>
+						<h3>Comprehesive list of Mutual Funds</h3>
+						<p>
+							We provide an extensive list of various mutual fund schemes in multiple mutual fund types.
+							All of the schemes we provide are long standing and are trusted by many
+						</p>
+					</div>
+				</div>
+				<div>
+					<i class="fa fa-pie-chart fa-2x"></i>
+					<div>
+						<h3>Easy to understand investments</h3>
+						<p>
+							We provide an interface through which it is easy to gauge the performance of your portfolio
+							and keep track of all your investments. We make it, so that you don't have to worry about
+							anything other than the performance of your investments.
+						</p>
+					</div>
+				</div>
+				<div>
+					<i class="fas fa-thumbs-up fa-2x"></i>
+					<div>
+						<h3>Simple investing and redeeming processes</h3>
+						<p>
+							Our investing and redeeming processes are fast, simple, easy and informative so that you
+							don't have to think twice and are completely satisfied.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="solutions flex-columns">
+			<div class="row">
+				<div class="column">
+					<div class="column-1">
+						<img th:src="@{/css/mutual-fund-side-img.avif}" alt="Mutual Funds">
+					</div>
+				</div>
+				<div class="column">
+					<div class="column-2 bg-primary">
+						<h4>What you are looking for</h4>
+						<h2>We provide investing solutions</h2>
+						<p>
+							Through our tried and tested techniques, we provide our customers with the best in class
+							investing solutions so that you invest you money effectively. With our effecient and robust
+							system we provide real-time updates to your portfolio. You can be rest assured that we take
+							your investments seriously as that is the best investment for our company.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="footer bg-dark">
+			<p>MutualFund Portfolio</p>
+		</footer>
+
+		<script>
+			const navbar = document.getElementById('navbar');
+			let scrolled = false;
+
+			window.onscroll = function () {
+				if (window.pageYOffset > 100) {
+					navbar.classList.remove('top');
+					if (!scrolled) {
+						navbar.style.transform = 'translateY(-30px)';
+					}
+					setTimeout(function () {
+						navbar.style.transform = 'translateY(0)';
+						scrolled = true;
+					}, 100);
+				} else {
+					navbar.classList.add('top');
+					scrolled = false;
+				}
+			};
+			$('#navbar a, .btn').on('click', function (e) {
+				if (this.hash !== '') {
+					e.preventDefault();
+					const hash = this.hash;
+					$('html, body').animate(
+						{
+							scrollTop: $(hash).offset().top - 70,
+						},
+						800
+					);
+				}
+			});
+		</script>
+</body>
+
+</html>

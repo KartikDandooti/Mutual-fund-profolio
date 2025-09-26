@@ -1,0 +1,22 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: 0;
+}
+
+.error-container {
+	text-align: center;
+}
+
+.error-container h1 {
+	color: red;
+}
+
+.error-container .btn-primary {
+	background-color: blue;
+	color: white;
+	position: relative;
+}

@@ -1,0 +1,126 @@
+@charset "ISO-8859-1";
+
+body {
+	background-color: #15172b;
+	color: white;
+	font-family: Arial, sans-serif;
+}
+
+table {
+	margin: auto;
+	width: 60%;
+	border-collapse: collapse;
+	border: 2px solid white;
+	border-radius: 10px;
+}
+
+th,
+td {
+	background-color: #15172b;
+	color: white;
+	text-align: center;
+	padding: 8px;
+	border: 1px solid white;
+}
+
+th {
+	background-color: black;
+}
+
+tr,
+td,
+a {
+	color: #eee;
+}
+
+.investLink {
+	color: #28a745;
+}
+
+caption {
+	margin: auto;
+	background-color: #28a745;
+	margin-bottom: 5%;
+	border-radius: 5px;
+	text-align: center;
+	color: #eee;
+	width: 50%;
+	font-weight: 700;
+	font-size: 25px;
+	padding: 2%;
+
+}
+
+h2 {
+	margin-top: 50px;
+	color: #333;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+.user-transactions {
+	margin-top: 20px;
+}
+
+#invest-transactions-table,
+#redeemed-transactions-table {
+	margin-top: 20px;
+}
+
+.no-transactions {
+	text-align: center;
+	color: rgb(255, 0, 0);
+	border: white;
+	margin-right: 80px;
+	margin-top: 1%;
+	font-weight: bolder;
+}
+
+.pagination {
+	height: 50px;
+	width: 400px;
+	background-color: #15172b;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+
+.pagination a {
+	color: #eee;
+	text-decoration: none;
+	padding: 8px;
+	margin: 0 5px;
+	border: 1px solid white;
+	border-radius: 4px;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+	background-color: #28a745;
+	color: #eee;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	background-color: #333;
+	color: white;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid white;
+	width: 80%;
+}
